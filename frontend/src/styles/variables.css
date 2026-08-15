@@ -1,0 +1,97 @@
+:root {
+  --color-bg: #FEF7F2;
+  --color-surface: #F2EDE0;
+  --color-surface-raised: #FFFFFF;
+  --color-surface-alt: #FEF3EC;
+  --color-text-primary: #3D3A45;
+  --color-text-secondary: #59514F;
+
+  --method-text: #93AF8F;
+  --method-semantic: #E0D3E6;
+  --method-speech: #97ACC2;
+
+  --color-border: #E6DCCB;
+  --color-border-strong: #D8CBB4;
+  --color-danger: #BE5C52;
+  --color-danger-soft: #F6E2DD;
+  --color-success: #6E8B67;
+  --color-accent-rose: #D4A5A5;
+
+  --color-admin-accent: #7C9473;
+  --color-user-accent: #7A6FA6;
+  --role-admin-card-bg: #DAE7DA;
+  --role-user-card-bg: #E0D3E6;
+
+  --settings-account-fg: #7C9473;
+  --settings-account-bg: #F3F7F3;
+  --settings-privacy-fg: #7A6FA6;
+  --settings-privacy-bg: #F6F2F8;
+  --settings-data-fg: #E1AD01;
+  --settings-data-bg: #FFFAEB;
+  --settings-danger-fg: #822828;
+  --settings-danger-bg: #FAF0F0;
+
+  --upload-dropzone-bg: #F3F7F3;
+  --upload-pipeline-bg: #F6F2F8;
+  --upload-notice-bg: #FBEDEE;
+  --upload-browse-text: #416241;
+  --upload-state-uploading: var(--color-accent-rose);
+  --upload-state-processing: var(--method-speech);
+  --upload-state-subtitles: var(--method-semantic);
+  --upload-state-done: var(--method-text);
+
+  --font-display: "Fira Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Fira Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-extended: "Fira Sans Extended", "Fira Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(61, 58, 69, 0.06);
+  --shadow-md: 0 4px 16px rgba(61, 58, 69, 0.08);
+
+  --sidebar-width: 248px;
+  /* 224px fits the longest admin nav label ("Data Management") without wrapping, narrower than shared --sidebar-width (248px) */
+  --admin-sidebar-width: 224px;
+}
+
+:root.dark-mode {
+  --color-bg: #1E1B24;
+  --color-surface: #27232F;
+  --color-surface-raised: #322D3B;
+  --color-surface-alt: #2C2735;
+  --color-text-primary: #F3F0F2;
+  --color-text-secondary: #B7AEB3;
+
+  --color-border: #3E3849;
+  --color-border-strong: #4C4558;
+  --color-danger: #E0847A;
+  --color-danger-soft: #3A2426;
+  --color-success: #8FB088;
+
+  --role-admin-card-bg: #263630;
+  --role-user-card-bg: #2E2938;
+
+  --settings-account-bg: #24302A;
+  --settings-privacy-bg: #292533;
+  --settings-data-bg: #322C1E;
+  --settings-danger-bg: #332325;
+
+  --upload-dropzone-bg: #24302A;
+  --upload-pipeline-bg: #292533;
+  --upload-notice-bg: #332325;
+  --upload-browse-text: #9CC49A;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+}

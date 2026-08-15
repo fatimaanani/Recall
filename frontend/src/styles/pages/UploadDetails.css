@@ -1,0 +1,223 @@
+/* explicit grid-column/grid-row (not named areas) so the mobile query below can freely reorder these into a single column */
+.upload-details-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: var(--space-lg);
+  align-items: start;
+}
+.upload-details-media { grid-column: 1; grid-row: 1; }
+.upload-details-file { grid-column: 2; grid-row: 1; }
+.upload-details-transcript { grid-column: 1; grid-row: 2; }
+.upload-details-saved { grid-column: 2; grid-row: 2; }
+
+/* avoids doubling the grid's own gap with .ui-card's default margin-bottom */
+.upload-details-file,
+.upload-details-transcript,
+.upload-details-saved {
+  margin-bottom: 0;
+}
+
+/* deliberately duplicates Scene Viewer's .player styling rather than importing SceneViewer.css, to keep page CSS page-scoped */
+.upload-details-player {
+  background: #000;
+  border-radius: var(--radius-lg);
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.upload-details-player--state {
+  flex-direction: column;
+  gap: var(--space-sm);
+  text-align: center;
+  padding: var(--space-lg);
+  color: rgba(255, 255, 255, 0.85);
+}
+.upload-details-player--state p { margin: 0; font-size: 13.5px; max-width: 320px; }
+
+.upload-details-player--audio {
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+}
+.upload-details-audio-mascot {
+  max-width: 140px;
+  max-height: 140px;
+  object-fit: contain;
+}
+
+.upload-details-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 13.5px;
+}
+.upload-details-info-row--last { border-bottom: none; }
+
+.upload-details-transcript-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.upload-details-transcript-row {
+  display: grid;
+  /* max-content sizes to the longest timestamp format present so neither MM:SS nor H:MM:SS wraps or clips */
+  grid-template-columns: max-content 1fr;
+  align-items: start;
+  gap: var(--space-sm);
+  padding: 9px 6px;
+  border-bottom: 1px solid var(--color-border);
+  border-left: 3px solid transparent;
+  font-size: 13.5px;
+  transition: background-color 0.12s ease, border-left-color 0.12s ease;
+}
+.upload-details-transcript-list li.upload-details-transcript-row:last-child {
+  border-bottom: none;
+}
+.upload-details-transcript-row--clickable:hover {
+  background: var(--color-surface-raised);
+}
+.upload-details-transcript-row--active {
+  background: var(--color-surface-raised);
+  border-left-color: var(--color-success);
+}
+
+.upload-details-transcript-time {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text-secondary);
+  font-family: var(--font-extended);
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+button.upload-details-transcript-time--clickable {
+  cursor: pointer;
+  margin: 0;
+}
+.upload-details-transcript-time--clickable:hover {
+  background: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+.upload-details-transcript-time--clickable:focus-visible {
+  outline: 2px solid var(--color-user-accent);
+  outline-offset: 1px;
+}
+
+.upload-details-transcript-text {
+  color: var(--color-text-primary);
+  min-width: 0;
+  line-height: 1.5;
+  padding-top: 3px;
+}
+
+.upload-details-transcript-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--space-md);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-extended);
+  color: var(--method-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.upload-details-transcript-toggle:hover { text-decoration: underline; }
+
+.upload-details-saved-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.upload-details-saved-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+.upload-details-saved-row:hover {
+  background: var(--color-surface);
+  border-color: var(--color-border-strong);
+}
+.upload-details-saved-row__thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 56px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.upload-details-saved-row__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.upload-details-saved-row__mascot { width: 28px; height: 28px; object-fit: contain; }
+.upload-details-saved-row__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.28);
+}
+.upload-details-saved-row__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.upload-details-saved-row__title {
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-extended);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.upload-details-saved-row__meta { font-size: 11.5px; }
+
+@media (max-width: 480px) {
+  .upload-details-saved-row__thumb { width: 44px; height: 36px; }
+  .upload-details-saved-row__title { font-size: 12.5px; }
+}
+
+@media (max-width: 480px) {
+  .upload-details-transcript-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .upload-details-transcript-time { justify-self: start; }
+}
+
+@media (max-width: 900px) {
+  .upload-details-grid { grid-template-columns: 1fr; }
+  .upload-details-media { grid-column: 1; grid-row: 1; }
+  .upload-details-file { grid-column: 1; grid-row: 2; }
+  .upload-details-transcript { grid-column: 1; grid-row: 3; }
+  .upload-details-saved { grid-column: 1; grid-row: 4; }
+}

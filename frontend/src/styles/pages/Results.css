@@ -1,0 +1,32 @@
+.meta-bar {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+.meta-item { display: flex; flex-direction: column; gap: 2px; }
+.meta-item-label { font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.02em; }
+.meta-item-value { font-weight: 500; font-family: var(--font-extended); }
+
+/* own class names rather than importing Library.css, so this page doesn't depend on stylesheet load order */
+.results-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: var(--space-md) 0 var(--space-lg); }
+.results-toolbar .filter-chip { display: inline-flex; align-items: center; gap: 4px; }
+.results-toolbar__sort { margin-left: auto; }
+.results-toolbar__sort .select-input { width: auto; padding: 6px 10px; font-size: 12px; min-width: 160px; }
+
+.results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-md); align-items: stretch; }
+/* matches Library's card surface (--color-surface-alt) instead of the .media-card default so cards look consistent */
+.result-card { background: var(--color-surface-alt); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-md); display: flex; flex-direction: column; gap: 6px; }
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.card-title { font-size: 14.5px; font-weight: 500; font-family: var(--font-extended); margin: 0; }
+.card-meta { font-size: 11.5px; color: var(--color-text-secondary); display: flex; align-items: center; gap: 4px; }
+.card-actions { display: flex; gap: var(--space-xs); margin-top: auto; padding-top: var(--space-xs); }
+.card-view-scene-btn { border-radius: var(--radius-pill); }
+
+@media (max-width: 720px) {
+  .results-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,56 @@
+.home-page {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-md);
+  max-width: 100%;
+  font-family: var(--font-extended);
+  font-size: 15.5px;
+  background-image: url("../../assets/illustrations/homeTemplate.png");
+  background-attachment: scroll;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.home-page h1 { font-family: var(--font-extended); font-weight: 500; font-size: 34px; max-width: 700px; margin: 0 auto var(--space-sm); }
+.home-page h3 { font-family: var(--font-extended); font-weight: 500; }
+.home-page strong { font-family: var(--font-extended); font-weight: 500; }
+.home-page .search-bar-wrap { max-width: 720px; margin: var(--space-lg) auto 0; }
+.home-page .method-tabs { justify-content: center; margin-top: var(--space-lg); }
+.quick-actions { display: flex; gap: var(--space-md); justify-content: center; margin-top: var(--space-lg); flex-wrap: wrap; }
+.action-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-alt);
+  cursor: pointer;
+  text-align: left;
+}
+.action-icon { background: var(--color-surface-raised); padding: 8px; border-radius: 50%; display: flex; }
+.action-icon-upload { color: var(--method-text); }
+.action-icon-record { color: var(--method-speech); }
+.action-card:disabled { cursor: not-allowed; opacity: 0.55; }
+.action-card:disabled:hover { filter: none; }
+.recent-header { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: var(--space-xl) auto 0; text-align: left; }
+.view-all-link { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 500; font-family: var(--font-extended); color: var(--method-text); background: none; border: none; cursor: pointer; padding: 0; }
+.view-all-link:hover { text-decoration: underline; }
+.recent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-xs); margin-top: var(--space-sm); max-width: 780px; margin-left: auto; margin-right: auto; text-align: left; align-items: stretch; }
+.recent-card { display: flex; flex-direction: column; gap: 2px; padding: 6px 10px; border-radius: var(--radius-md); background: var(--color-surface-raised); border: 1px solid var(--color-border); min-width: 0; }
+.recent-card-top { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.recent-card-icon { background: var(--color-surface); padding: 4px; border-radius: 50%; display: flex; flex-shrink: 0; }
+.recent-card-text { font-weight: 400; font-size: 12px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 1; }
+.recent-card-meta { font-size: 10px; color: var(--color-text-secondary); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+:root.dark-mode .home-page::before { background-image: url("../../assets/illustrations/homeTemplate.png"); }
+
+@media (max-width: 720px) {
+  .search-bar { padding-right: 90px; }
+  .search-bar-wrap .btn span { display: none; }
+  .recent-grid { grid-template-columns: 1fr; }
+  /* fixed attachment avoids cover zooming in once recent searches stack the page past viewport height; position shifted toward top to clear the heading */
+  .home-page {
+    background-attachment: fixed;
+    background-position: center top;
+  }
+  .home-page h1 { font-size: 24px; line-height: 1.3; }
+}

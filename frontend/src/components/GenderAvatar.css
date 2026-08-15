@@ -1,0 +1,8 @@
+.gender-avatar {
+  display: inline-flex;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: transparent;
+}
+.gender-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }

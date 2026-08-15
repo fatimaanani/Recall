@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Vite resolves/bundles this relative href the same way it does
+         script src -- no need for a separate public/ copy of the file.
+         Uses the tightly-cropped icon variant (see Logo.jsx's own
+         comment) rather than the original ReCallLogo.png -- a favicon
+         has no CSS to crop it, so it needs the artwork to already fill
+         the frame, especially since browsers render it as small as
+         16x16px where a large background margin would make it unreadable. -->
+    <link rel="icon" type="image/png" href="./src/assets/icons/ReCallLogo-icon.png" />
+    <title>Dynamic Multimedia Scene Retrieval System</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+.upload-dropzone {
+  border: 2px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+  background: var(--upload-dropzone-bg);
+  margin-bottom: var(--space-lg);
+}
+.upload-dropzone__hint { font-size: 12.5px; color: var(--color-text-secondary); margin-top: var(--space-sm); }

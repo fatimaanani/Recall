@@ -1,0 +1,5 @@
+.logo { display: flex; align-items: center; gap: var(--space-sm); }
+.logo--sm .logo__wordmark { font-size: 18px; }
+.logo__mark { display: block; flex-shrink: 0; border-radius: 50%; object-fit: cover; }
+.logo__wordmark { font-family: var(--font-extended); font-weight: 500; font-size: 24px; color: var(--color-text-primary); }
+.logo__wordmark-accent { color: var(--method-text); }

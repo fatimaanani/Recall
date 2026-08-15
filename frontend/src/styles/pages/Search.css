@@ -1,0 +1,3 @@
+.search-form-grid { display: grid; gap: var(--space-md); max-width: 640px; }
+/* .search-bar's base padding reserves room for Home's overlaid button; this page's submit is a separate field below, so fall back to symmetric padding */
+.search-page .search-bar { padding-right: 46px; }

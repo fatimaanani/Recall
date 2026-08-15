@@ -1,0 +1,71 @@
+.ui-card--flush { padding: 0; overflow: hidden; }
+.table-actions { display: flex; gap: var(--space-xs); }
+
+/* actions cell is its own flex row so it needs its own wrap rule; ::before needs a forced 100% flex-basis to sit on its own line above the buttons */
+@media (max-width: 768px) {
+  .data-table--stacked .table-actions {
+    flex-wrap: wrap;
+  }
+  .data-table--stacked .table-actions::before {
+    flex: 1 0 100%;
+    margin-bottom: 4px;
+  }
+}
+
+.delete-confirm-row {
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+.delete-confirm-row__prompt { margin: 0 0 var(--space-sm); font-size: 13px; }
+.delete-confirm-row__controls { display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; }
+.delete-confirm-row__input {
+  flex: 1;
+  min-width: 160px;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-size: 13px;
+}
+
+.view-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 340px;
+  max-width: 90vw;
+  background: var(--color-surface-alt);
+  border-left: 1px solid var(--color-border);
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.12);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+}
+.view-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.view-panel__close { background: none; border: none; cursor: pointer; color: var(--color-text-secondary); padding: 4px; display: flex; }
+.view-panel__close:hover { color: var(--color-danger); }
+.view-panel__body { padding: var(--space-md); overflow-y: auto; }
+.view-panel__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 13px;
+}
+.view-panel__row:last-child { border-bottom: none; }
+.view-panel__label { color: var(--color-text-secondary); flex-shrink: 0; }
+/* flex:1 + min-width:0 let a long email/username wrap instead of forcing the
+   fixed-width side panel wider than the viewport */
+.view-panel__value { flex: 1; min-width: 0; font-weight: 500; font-family: var(--font-extended); text-align: right; overflow-wrap: anywhere; }

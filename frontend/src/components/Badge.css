@@ -1,0 +1,17 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 11.5px;
+  font-weight: 500; font-family: var(--font-extended);
+}
+.badge.method-text { background: var(--method-text); color: #24361f; }
+.badge.method-semantic { background: var(--method-semantic); color: #4a2f57; }
+.badge.method-speech { background: var(--method-speech); color: #1c2f42; }
+.badge--status-ready { background: #E4EEDF; color: var(--color-success); }
+.badge--status-processing { background: #F1E7D3; color: #8A6A2A; }
+.badge--status-failed { background: var(--color-danger-soft); color: var(--color-danger); }
+.badge--status-neutral { background: var(--color-surface); color: var(--color-text-secondary); }

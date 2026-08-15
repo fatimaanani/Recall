@@ -1,0 +1,26 @@
+.stat-card { position: relative; background: var(--color-surface-raised); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-md); }
+.stat-card--transparent { background: color-mix(in srgb, var(--color-surface-raised) 55%, transparent); }
+.stat-card__header { display: flex; align-items: center; gap: var(--space-xs); color: var(--color-text-secondary); font-size: 13px; margin-bottom: var(--space-xs); }
+.stat-card__icon { display: inline-flex; padding: 6px; background: var(--color-surface); border-radius: var(--radius-sm); }
+.stat-card__value { font-family: var(--font-extended); font-size: 26px; font-weight: 500; }
+.stat-card__delta { font-size: 11.5px; color: var(--color-success); margin-top: 2px; }
+.stat-card__delta--down { color: var(--color-danger); }
+.stat-card__delta-icon { display: none; }
+
+.stat-card__info-wrap { position: absolute; top: var(--space-sm); right: var(--space-sm); }
+.stat-card__info-btn {
+  width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--color-border-strong);
+  background: var(--color-surface); color: var(--color-text-secondary);
+  display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer;
+}
+.stat-card__info-btn:hover, .stat-card__info-btn[aria-expanded="true"] {
+  color: var(--color-text-primary); border-color: var(--color-text-secondary);
+}
+.stat-card__popover {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 5;
+  width: max-content; max-width: 190px;
+  background: var(--color-surface-raised); border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-md);
+  padding: 8px 10px; font-size: 12px; line-height: 1.4; color: var(--color-text-primary);
+  font-family: var(--font-body); font-weight: 400;
+}

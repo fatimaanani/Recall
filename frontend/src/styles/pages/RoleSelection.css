@@ -1,0 +1,107 @@
+.selection-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  padding: var(--space-2xl) var(--space-md);
+  text-align: center;
+  background-image: url("../../assets/illustrations/UserAdminTemplate.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.intro { max-width: 520px; }
+.intro h1 .accent { color: var(--method-text); }
+.role-cards { display: flex; gap: var(--space-lg); flex-wrap: wrap; justify-content: center; align-items: stretch; }
+.role-card {
+  width: 280px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-sm);
+}
+.role-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-raised);
+  margin-bottom: var(--space-xs);
+}
+.role-icon-row { display: flex; align-items: center; justify-content: center; gap: 2px; }
+.role-icon-leaf { width: 32px; height: auto; flex-shrink: 0; }
+.role-icon-leaf--left { transform: scaleX(-1); }
+/* display:contents keeps children as direct flex items of .role-card on desktop; mobile below turns it into a real column */
+.role-card__content { display: contents; }
+.role-admin { background: var(--role-admin-card-bg); }
+.role-admin .role-icon,
+.role-admin h2 { color: var(--color-admin-accent); }
+.role-user { background: var(--role-user-card-bg); }
+.role-user .role-icon,
+.role-user h2 { color: var(--color-user-accent); }
+.role-card p { font-size: 13px; }
+.footer-note {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  font-size: 12.5px;
+  color: var(--color-text-secondary);
+  max-width: 560px;
+}
+.footer-note a { color: var(--method-text); font-weight: 500; font-family: var(--font-extended); }
+.legal-links { font-size: 12px; color: var(--color-text-secondary); }
+.legal-links a { text-decoration: underline; }
+:root.dark-mode .selection-page::before { background-image: url("../../assets/illustrations/UserAdminTemplate.png"); }
+
+@media (max-width: 768px) {
+  /* mobileRoleSelection.png: portrait-ratio asset made for this breakpoint so cover doesn't zoom past the desktop image's edges; fixed attachment pins sizing to the viewport instead of the taller wrapped-card page */
+  .selection-page {
+    background-image: url("../../assets/illustrations/mobileRoleSelection.png");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+}
+@media (max-width: 480px) {
+  .role-cards { gap: var(--space-sm); }
+  .role-card {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: var(--space-md);
+    gap: var(--space-sm);
+  }
+  .role-icon-row { flex-shrink: 0; }
+  .role-icon-leaf { display: none; }
+  .role-icon { width: 44px; height: 44px; margin-bottom: 0; }
+  .role-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
+  }
+  .role-card__content h2 { font-size: 16px; margin: 0; }
+  .role-card p { font-size: 12px; margin: 0; }
+  .role-card .btn--block {
+    width: auto;
+    padding: 8px 14px;
+    font-size: 12.5px;
+    margin-top: 2px !important;
+  }
+}

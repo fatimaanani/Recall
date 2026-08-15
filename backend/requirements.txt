@@ -1,0 +1,75 @@
+# Core framework and database dependencies.
+
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+sqlalchemy==2.0.35
+alembic==1.13.2
+psycopg[binary]==3.2.2
+pydantic==2.9.2
+pydantic-settings==2.5.2
+python-dotenv==1.0.1
+
+# pgvector column type (transcript_segments.embedding) and authentication.
+pgvector==0.3.6
+passlib[bcrypt]==1.7.4
+# Pinned below passlib's own tested range: passlib 1.7.4's bcrypt backend
+# detection crashes on bcrypt>=4.1 (looks for a `__about__` module that
+# newer bcrypt releases removed). This is passlib's bug, not a project
+# choice , unpin once passlib ships a fix.
+bcrypt==4.0.1
+pyjwt==2.9.0
+email-validator==2.2.0
+
+# Uploads module. python-multipart is a hard FastAPI/Starlette requirement
+# for parsing multipart/form-data (file uploads + form fields) , without
+# it, any route using UploadFile/Form raises a runtime error the moment
+# it's called. No file-type-sniffing library (e.g. python-magic) is added
+# here: it needs the system libmagic library, which is extra setup friction
+# for a graduation project; app/utils/file_validation.py instead checks a
+# small set of known magic-byte signatures directly (see that file).
+python-multipart==0.0.9
+
+# Media processing module - Whisper transcription stage
+# (app/processing/whisper_processor.py). faster-whisper is a CTranslate2-
+# based reimplementation of OpenAI's Whisper: same models/accuracy, much
+# faster on CPU, and it's what's actually imported (no plain `whisper` /
+# `openai-whisper` package is used). Still requires the system FFmpeg
+# binary already documented in .env.example , this stage extracts each
+# video's audio track with it before handing the result to Whisper.
+faster-whisper==1.0.3
+requests==2.32.3
+
+# Embedding generation module (app/processing/embedding_processor.py),
+# populates transcript_segments.embedding for semantic search. all-MiniLM-
+# L6-v2 (the default model, see app/config.py) outputs 384-dim vectors,
+# matching the Vector(384) column already defined in
+# app/models/transcript_segment.py , any other model swapped in later
+# must match that dimension or the column needs its own migration.
+# sentence-transformers pulls in torch/transformers/numpy as transitive
+# dependencies; there's no lighter-weight option that still runs a real
+# sentence-embedding model locally (no external embedding API is used, to
+# keep this offline and free, consistent with faster-whisper above).
+sentence-transformers==3.0.1
+
+# Testing (backend/tests/). pytest-mock
+# only wraps unittest.mock in a fixture; used for the unit tests that mock
+# the DB session instead of requiring PostgreSQL (see backend/tests/README.md
+# and TEST_DATABASE_URL in .env.example for the integration-test half). httpx
+# is FastAPI's own required transport for fastapi.testclient.TestClient ,
+# it is not pulled in by fastapi or uvicorn[standard] on its own, and
+# test_admin_analytics_api.py (Analytics & Evaluation admin-auth tests) is
+# the first file in this project to use TestClient, so it's added here now.
+pytest==8.3.3
+pytest-mock==3.14.0
+httpx==0.27.2
+
+# Elasticsearch client (app/services/elasticsearch_service.py) , EVALUATION
+# ONLY, see that module's docstring. Paired with Elasticsearch server 8.15.x
+# (the official elasticsearch-py major version must match the server's
+# major version , see backend/README.md's Windows install tutorial for the
+# exact server download). Importing this package never runs any network
+# code by itself , the client is constructed lazily, only when an
+# evaluation run/backfill/health-check actually needs it, and only if
+# ELASTICSEARCH_ENABLED=True , so this dependency existing has zero effect
+# on normal app startup or live user search.
+elasticsearch==8.15.1

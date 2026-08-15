@@ -1,0 +1,39 @@
+.splash-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  background: var(--color-bg);
+  opacity: 0;
+  animation: splash-fade-in 600ms ease forwards;
+}
+
+.splash-page--exiting {
+  animation: splash-fade-out 400ms ease forwards;
+}
+
+@keyframes splash-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes splash-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.splash-image {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  object-fit: contain;
+}

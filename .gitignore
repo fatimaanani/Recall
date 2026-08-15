@@ -1,0 +1,36 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Environment files (never commit real secrets; .env.example files are tracked)
+.env
+.env.local
+*.env
+!.env.example
+
+# Backend runtime data (real uploaded media, generated clips/thumbnails,
+# and processing scratch space -- not source code)
+backend/storage/videos/
+backend/storage/clips/
+backend/storage/thumbnails/
+backend/storage/tmp/
+backend/logs/*.log
+
+# Alembic/pytest local artifacts
+backend/alembic/__pycache__/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.zip

@@ -1,0 +1,26 @@
+.gender-label-row { display: flex; align-items: center; gap: 6px; }
+.gender-field-avatar { flex-shrink: 0; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+.form-grid-thirds { grid-template-columns: 1fr 1fr 1fr; }
+.field-full { grid-column: 1 / -1; }
+.checkbox-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-text-secondary); }
+.register-panel {
+  background-image: url("../../../assets/illustrations/CreateAccountTemplate.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.register-panel .auth-split__brand-panel { justify-content: space-between; }
+.register-panel .auth-split__badge { align-self: flex-start; max-width: 360px; }
+.auth-card--alt-bg { background: var(--color-surface-alt); }
+.icon-sprinkle-row { display: flex; align-items: center; justify-content: center; gap: var(--space-2xs); }
+.icon-sprinkle { width: 84px; height: auto; flex-shrink: 0; margin: 0 -6px; }
+.icon-sprinkle-right { transform: scaleX(-1); }
+@media (max-width: 900px) {
+  .form-grid, .form-grid-thirds { grid-template-columns: 1fr; }
+}
+/* same runaway-zoom fix as .login-panel (see AuthShared.css): keeps cover sized to viewport once the field grid collapses to one column */
+@media (max-width: 899px) {
+  .register-panel { background-attachment: fixed; }
+}
+:root.dark-mode .register-panel::before { background-image: url("../../../assets/illustrations/CreateAccountTemplate.png"); }
